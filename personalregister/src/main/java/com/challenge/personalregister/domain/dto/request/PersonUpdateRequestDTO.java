@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -19,13 +18,8 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value = "PersonRequest")
-public class PersonRequestDTO {
-
-    @NotNull
-    @CPF
-    @ApiModelProperty(value = "CPF")
-    private String cpf;
+@ApiModel(value = "PersonUpdateRequest")
+public class PersonUpdateRequestDTO {
 
     @NotNull
     @ApiModelProperty(value = "Nome")
@@ -49,15 +43,15 @@ public class PersonRequestDTO {
     @ApiModelProperty(value = "Nacionalidade")
     private String nationality;
 
-    public static Person dtoToDocument(PersonRequestDTO personDTO) {
+    public static Person dtoToDocument(String cpf, PersonUpdateRequestDTO personUpdate) {
         return Person.builder()
-                .cpf(personDTO.getCpf())
-                .name(personDTO.getName())
-                .mail(personDTO.getMail())
-                .gender(personDTO.getGender())
-                .dateBirth(personDTO.getDateBirth())
-                .placeBirth(personDTO.getPlaceBirth())
-                .nationality(personDTO.getNationality())
+                .cpf(cpf)
+                .name(personUpdate.getName())
+                .mail(personUpdate.getMail())
+                .gender(personUpdate.getGender())
+                .dateBirth(personUpdate.getDateBirth())
+                .placeBirth(personUpdate.getPlaceBirth())
+                .nationality(personUpdate.getNationality())
                 .build();
     }
 

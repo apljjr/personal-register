@@ -8,8 +8,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -17,9 +21,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @ApiModel(value = "PersonResponse")
 public class PersonResponseDTO {
-
-    @ApiModelProperty(value = "Id no sistema")
-    private String id;
 
     @ApiModelProperty(value = "CPF")
     private String cpf;
@@ -45,7 +46,6 @@ public class PersonResponseDTO {
 
     public static PersonResponseDTO documentToDto(Person person) {
         return PersonResponseDTO.builder()
-//                .id(person.getId())
                 .cpf(person.getCpf())
                 .name(person.getName())
                 .mail(person.getMail())
@@ -55,5 +55,12 @@ public class PersonResponseDTO {
                 .nationality(person.getNationality())
                 .build();
     }
+
+    public static Page<PersonResponseDTO> documentToDtoPage(Page<Person> personPage) {
+        List<PersonResponseDTO> personResponseDTOS = new ArrayList<>();
+        personPage.stream().forEach(person -> personResponseDTOS.add(documentToDto(person)));
+        return new PageImpl<>(personResponseDTOS, personPage.getPageable(), personResponseDTOS.size());
+    }
+
 
 }

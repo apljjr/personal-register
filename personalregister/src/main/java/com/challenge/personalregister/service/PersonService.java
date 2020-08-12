@@ -1,10 +1,15 @@
 package com.challenge.personalregister.service;
 
-import com.challenge.personalregister.domain.dto.request.PersonRequestDTO;
+import com.challenge.personalregister.domain.dto.request.PersonCreateRequestDTO;
+import com.challenge.personalregister.domain.dto.request.PersonUpdateRequestDTO;
 import com.challenge.personalregister.domain.dto.response.PersonResponseDTO;
+import com.challenge.personalregister.exception.DataExistsException;
+import com.challenge.personalregister.exception.DataNotFoundException;
 import com.challenge.personalregister.repository.PersonRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,16 +19,39 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    public PersonResponseDTO getPersonById(String id) {
-        var person = personRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("id não existe"));
-        log.info("Pessoa encontrada, person={}", person);
+    public PersonResponseDTO getPersonByCpf(String cpf) {
+        var person = personRepository.findByCpf(cpf).orElseThrow(DataNotFoundException::new);
+        log.info("Pessoa encontrada com sucesso, person={}", person);
         return PersonResponseDTO.documentToDto(person);
     }
 
-    public PersonResponseDTO createPerson(PersonRequestDTO personDTO) {
-        var person = personRepository.save(PersonRequestDTO.dtoToDocument(personDTO));
-        log.info("Pessoa criada, person={}", person);
+    public PersonResponseDTO createPerson(PersonCreateRequestDTO personCreate) {
+        if(personRepository.existsByCpf(personCreate.getCpf())) {
+            throw new DataExistsException();
+        }
+        var person = personRepository.save(PersonCreateRequestDTO.dtoToDocument(personCreate));
+        log.info("Pessoa criada com sucesso, person={}", person);
         return PersonResponseDTO.documentToDto(person);
+    }
+
+    public Page<PersonResponseDTO> getAllPerson(PageRequest pageRequest) {
+        var pagePerson = personRepository.findAll(pageRequest);
+        log.info("Consulta com sucesso, persons={}", pagePerson);
+        return PersonResponseDTO.documentToDtoPage(pagePerson);
+    }
+
+    public  PersonResponseDTO updatePerson(String cpf, PersonUpdateRequestDTO personUpdate) {
+        if(!personRepository.existsByCpf(cpf)) {
+            throw new DataNotFoundException("Registro não encontrado para atualização");
+        }
+        var person = personRepository.save(PersonUpdateRequestDTO.dtoToDocument(cpf, personUpdate));
+        log.info("Pessoa atualizada com sucesso, person={}", person);
+        return PersonResponseDTO.documentToDto(person);
+    }
+
+    public void deletePersonByCPF(String cpf) {
+        personRepository.deleteById(cpf);
+        log.info("Pessoa excluida com sucesso, cpf={}", cpf);
     }
 
 }
