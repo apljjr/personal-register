@@ -43,8 +43,9 @@ public class PersonUpdateRequestDTO {
     @ApiModelProperty(value = "Nacionalidade")
     private String nationality;
 
-    public static Person dtoToDocument(String cpf, PersonUpdateRequestDTO personUpdate) {
+    public static Person dtoToDocument(String id, String cpf, PersonUpdateRequestDTO personUpdate) {
         return Person.builder()
+                .id(id)
                 .cpf(cpf)
                 .name(personUpdate.getName())
                 .mail(personUpdate.getMail())

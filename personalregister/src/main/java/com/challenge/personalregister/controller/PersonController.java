@@ -17,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,15 +26,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 
 
 @RestController
 @RequestMapping("/person")
 @Slf4j
 @Api(tags = {SwaggerConfig.CTRL_REGISTER})
+@Validated
 public class PersonController {
 
     @Autowired
@@ -99,8 +104,8 @@ public class PersonController {
             @ApiResponse(code = 405, message = "Método não permitido"),
             @ApiResponse(code = 500, message = "Sistema indisponível") })
     public ResponseEntity<Page<PersonResponseDTO>> getAllPerson (
-            @ApiParam(value = "Número da página", example = "0") @RequestParam(value = "page", defaultValue = "0") int page,
-            @ApiParam(value = "Número de registros por página", example = "50") @RequestParam(value = "size", defaultValue = "50") int size) {
+            @ApiParam(value = "Número da página", example = "0") @RequestParam(value = "page", defaultValue = "0") @PositiveOrZero int page,
+            @ApiParam(value = "Número de registros por página", example = "50") @RequestParam(value = "size", defaultValue = "50") @Positive int size) {
         log.info("Iniciando consulta de pessoas, page={}, size={}", page, size);
         return ResponseEntity.ok(personService.getAllPerson(PageRequest.of(page, size)));
     }
@@ -115,10 +120,11 @@ public class PersonController {
             @ApiResponse(code = 404, message = "Pessoa não localizado com o cpf informado"),
             @ApiResponse(code = 405, message = "Método não permitido"),
             @ApiResponse(code = 500, message = "Sistema indisponível") })
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deletePersonByCPF (
             @ApiParam(value = "CPF da pessoa", example = "63464419061", required = true) @PathVariable @CPF String cpf) {
         log.info("Iniciando exclusão de pessoa, cpf={}", cpf);
-        personService.deletePersonByCPF(cpf);
+        personService.deletePersonByCpf(cpf);
     }
 
 }

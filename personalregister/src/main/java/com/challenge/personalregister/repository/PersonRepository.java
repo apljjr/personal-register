@@ -11,4 +11,5 @@ public interface PersonRepository extends MongoRepository<Person, String> {
 
     Boolean existsByCpf(String cpf);
     Optional<Person> findByCpf(String cpf);
+    void deleteByCpf(String cpf);
 }

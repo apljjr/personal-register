@@ -29,7 +29,7 @@ public class BusinessException extends RuntimeException {
     private String description;
 
 
-    public BusinessExceptionBody getOnlyBody(){
+    public BusinessExceptionBody getOnlyBody() {
         return BusinessExceptionBody.builder()
                 .code(this.code)
                 .message(this.message)
@@ -42,7 +42,7 @@ public class BusinessException extends RuntimeException {
     @NoArgsConstructor
     @AllArgsConstructor
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    public static class BusinessExceptionBody{
+    public static class BusinessExceptionBody {
         private String code;
 
         private String message;

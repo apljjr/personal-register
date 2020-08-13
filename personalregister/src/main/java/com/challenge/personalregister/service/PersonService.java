@@ -41,16 +41,17 @@ public class PersonService {
     }
 
     public  PersonResponseDTO updatePerson(String cpf, PersonUpdateRequestDTO personUpdate) {
-        if(!personRepository.existsByCpf(cpf)) {
+        var personBeforeUpdate = personRepository.findByCpf(cpf);
+        if(personBeforeUpdate.isEmpty()) {
             throw new DataNotFoundException("Registro não encontrado para atualização");
         }
-        var person = personRepository.save(PersonUpdateRequestDTO.dtoToDocument(cpf, personUpdate));
-        log.info("Pessoa atualizada com sucesso, person={}", person);
-        return PersonResponseDTO.documentToDto(person);
+        var personAfterUpdate = personRepository.save(PersonUpdateRequestDTO.dtoToDocument(personBeforeUpdate.get().getId(), cpf, personUpdate));
+        log.info("Pessoa atualizada com sucesso, person={}", personAfterUpdate);
+        return PersonResponseDTO.documentToDto(personAfterUpdate);
     }
 
-    public void deletePersonByCPF(String cpf) {
-        personRepository.deleteById(cpf);
+    public void deletePersonByCpf(String cpf) {
+        personRepository.deleteByCpf(cpf);
         log.info("Pessoa excluida com sucesso, cpf={}", cpf);
     }
 
