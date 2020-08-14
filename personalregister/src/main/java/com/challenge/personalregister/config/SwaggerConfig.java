@@ -16,12 +16,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig extends WebMvcConfigurationSupport {
 
-    public static final String CTRL_REGISTER = "Registro de pessoas";
+    public static final String CTRL_PERSON = "Registro de pessoas";
+    public static final String CTRL_USER = "Registro e autenticação de usuário";
 
     @Bean
     public Docket greetingApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .tags(new Tag(CTRL_REGISTER, "Api responsável por gerenciar as informações de pessoas"))
+                .tags(new Tag(CTRL_PERSON, "Api responsável por gerenciar as informações de pessoas"))
+                .tags(new Tag(CTRL_USER, "Api responsável por gerenciar usuário"))
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.challenge.personalregister"))
                 .build()

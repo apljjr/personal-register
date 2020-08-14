@@ -37,7 +37,7 @@ import javax.validation.constraints.PositiveOrZero;
 @RestController
 @RequestMapping("/person")
 @Slf4j
-@Api(tags = {SwaggerConfig.CTRL_REGISTER})
+@Api(tags = {SwaggerConfig.CTRL_PERSON})
 @Validated
 public class PersonController {
 
