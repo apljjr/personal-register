@@ -18,7 +18,7 @@
     </thead>
     <tbody>
       <tr class="table-light" *ngFor="let person of persons">
-        <td>{{person.cpf}}</td>
+        <td>{{person.cpf | mask: '000.000.000-00'}}</td>
         <td>{{person.name}}</td>
         <td>{{person.gender}}</td>
         <td>{{person.mail}}</td>

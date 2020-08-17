@@ -1,7 +1,7 @@
 import { Component, OnInit , Inject} from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Person} from "../../model/person.model";
+import { ToastrService } from 'ngx-toastr';
 import {ApiService} from "../../service/api.service";
 
 @Component({
@@ -14,7 +14,7 @@ export class EditPersonComponent implements OnInit {
   editForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService) { }
+  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService, private toastr: ToastrService) { }
 
   ngOnInit() {
     let personCpf = window.localStorage.getItem("editPersonCpf");
@@ -50,11 +50,10 @@ export class EditPersonComponent implements OnInit {
     }
     this.apiService.updatePerson(this.editForm.value)
       .subscribe(() => {
-          debugger;
             this.router.navigate(['list-person']);
         },
         error => {
-          alert(error);
+          this.toastr.error('Verifique informações', 'Problemas ao atualizar');
         });
   }
 

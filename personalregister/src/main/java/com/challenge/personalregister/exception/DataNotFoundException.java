@@ -4,8 +4,6 @@ import com.challenge.personalregister.util.Constants;
 import org.springframework.http.HttpStatus;
 
 public class DataNotFoundException extends BusinessException {
-	
-   private static final long serialVersionUID = 2697252359599571441L;
    
    public DataNotFoundException() {
       this.setHttpStatusCode(HttpStatus.NOT_FOUND);

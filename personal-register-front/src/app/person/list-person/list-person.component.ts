@@ -28,7 +28,7 @@ export class ListPersonComponent implements OnInit {
   deletePerson(person: Person): void {
     this.apiService.deletePerson(person.cpf)
       .subscribe( () => {
-        this.persons = this.persons.filter(u => u !== person);
+        this.persons = this.persons.filter(p => p !== person);
       })
   }
 

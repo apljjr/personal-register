@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ApiService} from "../../service/api.service";
-import { cpf } from 'cpf-cnpj-validator';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-person',
@@ -11,7 +11,7 @@ import { cpf } from 'cpf-cnpj-validator';
 })
 export class AddPersonComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService) { }
+  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService, private toastr: ToastrService) { }
 
   addForm: FormGroup;
   submitted = false;
@@ -41,6 +41,9 @@ export class AddPersonComponent implements OnInit {
     this.apiService.createPerson(this.addForm.value)
       .subscribe( () => {
         this.router.navigate(['list-person']);
+      },
+      error => {
+        this.toastr.error('Verifique informações de pessoa', 'Problemas ao adicionar');
       });
   }
 

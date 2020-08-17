@@ -22,6 +22,8 @@
     "bootstrap": "^4.5.2",
     "cpf-cnpj-validator": "^1.0.2",
     "jquery": "^3.5.1",
+    "ngx-mask": "^8.0.0",
+    "ngx-toastr": "^11.3.3",
     "popper.js": "^1.14.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
