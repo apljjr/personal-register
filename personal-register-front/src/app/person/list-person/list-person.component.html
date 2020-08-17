@@ -1,30 +1,35 @@
-<div class="col-md-6 person-container">
-  <h2 style="margin: auto"> Listagem</h2>
-  <button class="btn btn-danger" style="width:100px" (click)="addPerson()"> Adicionar</button>
-  <table class="table table-striped">
+<div class="col-md-10 person-container">
+  <h2 class="m-auto"> Listagem</h2>
+  <div class="mb-2 col-md-2">
+    <button class="btn btn-info"(click)="addPerson()">Adicionar</button>
+  </div>
+  <table class="table table-hover">
     <thead>
-    <tr>
-      <th class="hidden">CPF</th>
-      <th>Nome</th>
-      <th>Gênero</th>
-      <th>E-mail</th>
-      <th>Data de Nascimento</th>
-      <th>Naturalidade</th>
-      <th>Nacionalidade</th>
-    </tr>
+      <tr>
+        <th scope="col">CPF</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Gênero</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Data de Nascimento</th>
+        <th scope="col">Naturalidade</th>
+        <th scope="col">Nacionalidade</th>
+        <th scope="col">Ações</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let person of persons">
-      <td class="hidden">{{person.cpf}}</td>
-      <td>{{person.name}}</td>
-      <td>{{person.gender}}</td>
-      <td>{{person.mail}}</td>
-      <td>{{person.dateBirth}}</td>
-      <td>{{person.placeBirth}}</td>
-      <td>{{person.nationality}}</td>
-      <td><button class="btn btn-success" (click)="deletePerson(person)"> Excluir</button>
-        <button class="btn btn-success" (click)="editPerson(person)" style="margin-left: 20px;"> Editar</button></td>
-    </tr>
+      <tr class="table-light" *ngFor="let person of persons">
+        <td>{{person.cpf}}</td>
+        <td>{{person.name}}</td>
+        <td>{{person.gender}}</td>
+        <td>{{person.mail}}</td>
+        <td>{{person.dateBirth}}</td>
+        <td>{{person.placeBirth}}</td>
+        <td>{{person.nationality}}</td>
+        <td>
+          <button class="btn btn-danger float-right" (click)="deletePerson(person)"> Excluir</button>
+          <button class="btn btn-success float-right" (click)="editPerson(person)"> Editar</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

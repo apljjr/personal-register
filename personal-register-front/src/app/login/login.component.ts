@@ -11,10 +11,24 @@ import {ApiService} from "../service/api.service";
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  invalidLogin: boolean = false;
+  submitted = false;
+
   constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) { }
 
+  ngOnInit() {
+    window.localStorage.removeItem('token');
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  get f() { 
+    return this.loginForm.controls; 
+  }
+
   onSubmit() {
+    this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     }
@@ -23,26 +37,9 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.controls.password.value
     }
     this.apiService.login(loginPayload).subscribe(data => {
-      // if(data.status === 201) {
-        debugger;
         window.localStorage.setItem('token', data.token);
         this.router.navigate(['list-person']);
-      // }else {
-      //   debugger;
-      //   this.invalidLogin = true;
-      //   alert(data.message);
-      // }
     });
   }
-
-  ngOnInit() {
-    window.localStorage.removeItem('token');
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.required]
-    });
-  }
-
-
 
 }

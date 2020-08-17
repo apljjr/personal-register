@@ -35,9 +35,7 @@ export class AddPersonComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    debugger;
     if (this.addForm.invalid) {
-      debugger;
       return;
     }
     this.apiService.createPerson(this.addForm.value)

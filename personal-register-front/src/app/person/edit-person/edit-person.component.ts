@@ -11,8 +11,9 @@ import {ApiService} from "../../service/api.service";
 })
 export class EditPersonComponent implements OnInit {
 
-  user: Person;
   editForm: FormGroup;
+  submitted = false;
+
   constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService) { }
 
   ngOnInit() {
@@ -34,15 +35,21 @@ export class EditPersonComponent implements OnInit {
     
     this.apiService.getPersonById(personCpf)
       .subscribe( data => {
-        debugger;
         this.editForm.setValue(data);
       });
   }
 
+  get f() { 
+    return this.editForm.controls; 
+  }
+
   onSubmit() {
+    this.submitted = true;
+    if (this.editForm.invalid) {
+      return;
+    }
     this.apiService.updatePerson(this.editForm.value)
-      .subscribe(
-        data => {
+      .subscribe(() => {
           debugger;
             this.router.navigate(['list-person']);
         },
