@@ -3,8 +3,13 @@ package com.challenge.personalregister.config;
 import com.challenge.personalregister.util.Constants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
@@ -16,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Configuration
-public class AuthFilterConfig extends GenericFilterBean {
+public class AuthConfig extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -45,5 +50,14 @@ public class AuthFilterConfig extends GenericFilterBean {
             return;
         }
         filterChain.doFilter(servletRequest, servletResponse);
+    }
+
+    @Bean
+    public FilterRegistrationBean<AuthConfig> filterRegistrationBean() {
+        FilterRegistrationBean<AuthConfig> registrationBean = new FilterRegistrationBean<>();
+        AuthConfig authFilter = new AuthConfig();
+        registrationBean.setFilter(authFilter);
+        registrationBean.addUrlPatterns("/person/*");
+        return registrationBean;
     }
 }

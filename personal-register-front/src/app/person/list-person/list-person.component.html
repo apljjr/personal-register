@@ -1,0 +1,30 @@
+<div class="col-md-6 person-container">
+  <h2 style="margin: auto"> Listagem</h2>
+  <button class="btn btn-danger" style="width:100px" (click)="addPerson()"> Adicionar</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">CPF</th>
+      <th>Nome</th>
+      <th>Gênero</th>
+      <th>E-mail</th>
+      <th>Data de Nascimento</th>
+      <th>Naturalidade</th>
+      <th>Nacionalidade</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let person of persons">
+      <td class="hidden">{{person.cpf}}</td>
+      <td>{{person.name}}</td>
+      <td>{{person.gender}}</td>
+      <td>{{person.mail}}</td>
+      <td>{{person.dateBirth}}</td>
+      <td>{{person.placeBirth}}</td>
+      <td>{{person.nationality}}</td>
+      <td><button class="btn btn-success" (click)="deletePerson(person)"> Excluir</button>
+        <button class="btn btn-success" (click)="editPerson(person)" style="margin-left: 20px;"> Editar</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

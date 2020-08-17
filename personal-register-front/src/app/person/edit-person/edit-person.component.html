@@ -1,0 +1,93 @@
+<div class="col-md-6 person-container">
+  <h2 class="text-center">Edit User</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="cpf">CPF:</label>
+      <input 
+        type="text" 
+        formControlName="cpf"
+        name="cpf" 
+        class="form-control" 
+        id="cpf"
+        readonly=true
+        [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }">
+      <div *ngIf="submitted && f.cpf.errors" class="invalid-feedback">
+        <div *ngIf="f.cpf.errors.required">CPF é requerido</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Nome:</label>
+      <input 
+        type="text" 
+        formControlName="name"
+        name="name" 
+        class="form-control" 
+        id="name"
+        [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Nome é requerido</div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="dateBirth">Data de Nascimento:</label>
+      <input 
+        type="text" 
+        formControlName="dateBirth"
+        name="dateBirth" 
+        class="form-control" 
+        id="dateBirth"
+        [ngClass]="{ 'is-invalid': submitted && f.dateBirth.errors }">
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Data de nascimento é requerida</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mail">E-mail:</label>
+      <input 
+        type="email" 
+        formControlName="mail"
+        name="mail" 
+        class="form-control" 
+        id="mail"
+        [ngClass]="{ 'is-invalid': submitted && f.mail.errors }">
+      <div *ngIf="submitted && f.mail.errors" class="invalid-feedback">
+        <div *ngIf="f.mail.errors">E-mail no formato incorreto</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Gênero:</label>
+      <input 
+        type="text" 
+        formControlName="gender"
+        name="gender" 
+        class="form-control" 
+        id="gender">
+    </div>
+
+    <div class="form-group">
+      <label for="placeBirth">Naturalidade:</label>
+      <input 
+        type="text" 
+        formControlName="placeBirth"
+        name="placeBirth" 
+        class="form-control" 
+        id="placeBirth">
+    </div>
+
+    <div class="form-group">
+      <label for="nationality">Nacionalidade:</label>
+      <input 
+        type="text" 
+        formControlName="nationality"
+        name="nationality" 
+        class="form-control" 
+        id="nationality">
+    </div>
+
+    <button class="btn btn-success">Update</button>
+  </form>
+</div>

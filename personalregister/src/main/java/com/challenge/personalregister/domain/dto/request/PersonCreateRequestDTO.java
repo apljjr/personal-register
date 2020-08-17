@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.time.LocalDate;
@@ -23,11 +25,13 @@ import java.time.LocalDate;
 public class PersonCreateRequestDTO {
 
     @NotNull
+    @NotEmpty
     @CPF
     @ApiModelProperty(value = "CPF")
     private String cpf;
 
     @NotNull
+    @NotEmpty
     @ApiModelProperty(value = "Nome")
     private String name;
 
@@ -39,6 +43,7 @@ public class PersonCreateRequestDTO {
     private String mail;
 
     @Past
+    @NotNull
     @ApiModelProperty(value = "Data de nascimento")
     @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     private LocalDate dateBirth;
