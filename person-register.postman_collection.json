@@ -1,0 +1,475 @@
+{
+	"info": {
+		"_postman_id": "bf6cb350-23b6-49ee-a97e-9b385e442a84",
+		"name": "Person Register",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LOCAL",
+			"item": [
+				{
+					"name": "Find By Cpf - Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc3MTE0OTAsImV4cCI6MTU5NzcxODY5MCwiaWQiOiI1ZjM2MGQ1NGQwOTBlNDdiNTE1ODYxMTQiLCJ1c2VybmFtZSI6InN0cmluZyJ9.HMpYE6-49NL2IQokcaKePDCe0Fdk-8JZkkVX6zIovKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/person/48294973009",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"48294973009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All  - Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc3MTE0OTAsImV4cCI6MTU5NzcxODY5MCwiaWQiOiI1ZjM2MGQ1NGQwOTBlNDdiNTE1ODYxMTQiLCJ1c2VybmFtZSI6InN0cmluZyJ9.HMpYE6-49NL2IQokcaKePDCe0Fdk-8JZkkVX6zIovKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/person",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create  - Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc3MTE0OTAsImV4cCI6MTU5NzcxODY5MCwiaWQiOiI1ZjM2MGQ1NGQwOTBlNDdiNTE1ODYxMTQiLCJ1c2VybmFtZSI6InN0cmluZyJ9.HMpYE6-49NL2IQokcaKePDCe0Fdk-8JZkkVX6zIovKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"48294973009\",\r\n    \"name\": \"Luiz Pedro\",\r\n    \"gender\": \"Masculino\",\r\n    \"mail\": \"luiz@person.com\",\r\n    \"dateBirth\": \"15/12/1992\",\r\n    \"placeBirth\": \"Olinda\",\r\n    \"nationality\": \"Brasileiro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/person",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update By Cpf - Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc3MTE0OTAsImV4cCI6MTU5NzcxODY5MCwiaWQiOiI1ZjM2MGQ1NGQwOTBlNDdiNTE1ODYxMTQiLCJ1c2VybmFtZSI6InN0cmluZyJ9.HMpYE6-49NL2IQokcaKePDCe0Fdk-8JZkkVX6zIovKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Luiz Pedro\",\r\n    \"gender\": \"Masculino\",\r\n    \"mail\": \"luiz@person.com\",\r\n    \"dateBirth\": \"15/12/1992\",\r\n    \"placeBirth\": \"Olinda\",\r\n    \"nationality\": \"Brasileiro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/person/48294973009",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"48294973009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete By Cpf - Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc3MTE0OTAsImV4cCI6MTU5NzcxODY5MCwiaWQiOiI1ZjM2MGQ1NGQwOTBlNDdiNTE1ODYxMTQiLCJ1c2VybmFtZSI6InN0cmluZyJ9.HMpYE6-49NL2IQokcaKePDCe0Fdk-8JZkkVX6zIovKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/person/48294973009",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"48294973009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token - User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"string111\",\r\n    \"password\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/auth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create - User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"string2\",\r\n    \"password\": \"string2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CLOUD",
+			"item": [
+				{
+					"name": "Find By Cpf - Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc3MTk2MTYsImV4cCI6MTU5NzcyNjgxNiwiaWQiOiI1ZjM2MGQ1NGQwOTBlNDdiNTE1ODYxMTQiLCJ1c2VybmFtZSI6InN0cmluZyJ9.jcQ2C7Vx4PUSPE7tMNxfLweeeO2ObWW_x57gyfHO5BY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://personalregister.herokuapp.com/person/86700161096",
+							"protocol": "https",
+							"host": [
+								"personalregister",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"person",
+								"86700161096"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All  - Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc3MTk2MTYsImV4cCI6MTU5NzcyNjgxNiwiaWQiOiI1ZjM2MGQ1NGQwOTBlNDdiNTE1ODYxMTQiLCJ1c2VybmFtZSI6InN0cmluZyJ9.jcQ2C7Vx4PUSPE7tMNxfLweeeO2ObWW_x57gyfHO5BY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://personalregister.herokuapp.com/person",
+							"protocol": "https",
+							"host": [
+								"personalregister",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"person"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create  - Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc3MTE0OTAsImV4cCI6MTU5NzcxODY5MCwiaWQiOiI1ZjM2MGQ1NGQwOTBlNDdiNTE1ODYxMTQiLCJ1c2VybmFtZSI6InN0cmluZyJ9.HMpYE6-49NL2IQokcaKePDCe0Fdk-8JZkkVX6zIovKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"48294973009\",\r\n    \"name\": \"Luiz Pedro\",\r\n    \"gender\": \"Masculino\",\r\n    \"mail\": \"luiz@person.com\",\r\n    \"dateBirth\": \"15/12/1992\",\r\n    \"placeBirth\": \"Olinda\",\r\n    \"nationality\": \"Brasileiro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://personalregister.herokuapp.com/person",
+							"protocol": "https",
+							"host": [
+								"personalregister",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"person"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update By Cpf - Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc3MTE0OTAsImV4cCI6MTU5NzcxODY5MCwiaWQiOiI1ZjM2MGQ1NGQwOTBlNDdiNTE1ODYxMTQiLCJ1c2VybmFtZSI6InN0cmluZyJ9.HMpYE6-49NL2IQokcaKePDCe0Fdk-8JZkkVX6zIovKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Luiz Pedro\",\r\n    \"gender\": \"Masculino\",\r\n    \"mail\": \"luiz@person.com\",\r\n    \"dateBirth\": \"15/12/1992\",\r\n    \"placeBirth\": \"Olinda\",\r\n    \"nationality\": \"Brasileiro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://personalregister.herokuapp.com/person/48294973009",
+							"protocol": "https",
+							"host": [
+								"personalregister",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"person",
+								"48294973009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete By Cpf - Person",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTc3MTE0OTAsImV4cCI6MTU5NzcxODY5MCwiaWQiOiI1ZjM2MGQ1NGQwOTBlNDdiNTE1ODYxMTQiLCJ1c2VybmFtZSI6InN0cmluZyJ9.HMpYE6-49NL2IQokcaKePDCe0Fdk-8JZkkVX6zIovKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://personalregister.herokuapp.com/person/48294973009",
+							"protocol": "https",
+							"host": [
+								"personalregister",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"person",
+								"48294973009"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token - User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"string\",\r\n    \"password\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://personalregister.herokuapp.com/user/auth",
+							"protocol": "https",
+							"host": [
+								"personalregister",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create - User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"string2\",\r\n    \"password\": \"string2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://personalregister.herokuapp.com/user",
+							"protocol": "https",
+							"host": [
+								"personalregister",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
