@@ -19,6 +19,13 @@ public class ControlExceptionHandler {
 
 	public static final String CONSTRAINT_VALIDATION_FAILED = "Constraint validation failed";
 
+	@ExceptionHandler(value = { BusinessException.class})
+	protected ResponseEntity<Object> handleConflict(BusinessException ex, WebRequest request) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+		return ResponseEntity.status(ex.getHttpStatusCode()).headers(responseHeaders).body(ex.getOnlyBody());
+
+	}
+
 	@ExceptionHandler({ ConstraintViolationException.class })
 	public ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException exMethod, WebRequest request) {
 		List<String> errors = new ArrayList<>();

@@ -39,7 +39,9 @@ public class UserService {
 
     public UserResponseDTO getByUsernameAndPassword(UserRequestDTO userRequestDTO) {
         var user = userRepository.findByUsername(userRequestDTO.getUsername())
-                .orElseThrow(DataNotFoundException::new);
+                .orElseThrow(() -> {
+                    throw new DataNotFoundException("Usuário não encontrado para geração de token");
+                });
         log.info("Usuário encontrada, user={}", user);
         verifyPasswords(userRequestDTO.getPassword(), user.getPassword());
         return UserResponseDTO.documentToDto(user, generateJWTToken(user));
