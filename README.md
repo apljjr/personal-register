@@ -12,6 +12,10 @@ Neste repositório contém a aplicação para registro de pessoas, com as seguin
 - **Nacionalidade**
 - **CPF**  - obrigatório, deve ter formato validado e não pode haver dois cadastros com mesmo CPF
 
+Para acessar a aplicação em ambiente cloud é só clicar aqui, [Registro de Pessoas](https://personalregister-front.herokuapp.com)
+
+O usuário de acesso é ***guest*** e senha ***guest***
+
 ## Tecnologias utilizadas
 
 - **Angular** - versão 8.2.5
